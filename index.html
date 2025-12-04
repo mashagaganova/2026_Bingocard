@@ -63,24 +63,28 @@
         
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 0;
+            background: linear-gradient(135deg, #1800ad 0%, #000000 100%);
+            margin: 0 -40px;
+            padding: 30px 40px;
+            border-radius: 0;
         }
         
         h1 {
-            color: #2d3748;
+            color: white;
             font-size: 2.5em;
             margin-bottom: 10px;
             line-height: 1.2;
         }
         
         .tagline {
-            color: #718096;
+            color: rgba(255, 255, 255, 0.9);
             font-size: 1.2em;
             margin-bottom: 10px;
         }
         
         .subtitle {
-            color: #a0aec0;
+            color: rgba(255, 255, 255, 0.8);
             font-size: 0.95em;
             max-width: 500px;
             margin: 0 auto;
@@ -88,11 +92,11 @@
         }
         
         .bingo-wrapper {
-            background: #1800ad;
-            padding: 40px;
-            border-radius: 20px;
-            margin: 30px 0;
-            box-shadow: 0 10px 40px rgba(24, 0, 173, 0.3);
+            background: linear-gradient(135deg, #1800ad 0%, #000000 100%);
+            padding: 30px 20px;
+            border-radius: 0;
+            margin: 30px -40px;
+            box-shadow: none;
         }
         
         .bingo-year {
@@ -108,9 +112,10 @@
         .bingo-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            max-width: 700px;
+            gap: 10px;
+            max-width: 100%;
             margin: 0 auto 25px;
+            padding: 0 10px;
         }
         
         .bingo-cell {
