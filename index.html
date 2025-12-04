@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 Bingo Card</title>
+    <title>2026 Bingo Card - MGM Creative Solutions</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000000 0%, #3533cd 100%);
             min-height: 100vh;
             padding: 20px;
             display: flex;
@@ -28,6 +28,37 @@
             border-radius: 24px;
             padding: 40px;
             box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .logo-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .logo-header img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        .company-name {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #1e1e1e;
+            margin-bottom: 5px;
+        }
+        
+        .company-name a {
+            color: #1800ad;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .company-name a:hover {
+            opacity: 0.7;
         }
         
         .header {
@@ -57,11 +88,11 @@
         }
         
         .bingo-wrapper {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: #1800ad;
             padding: 40px;
             border-radius: 20px;
             margin: 30px 0;
-            box-shadow: 0 10px 40px rgba(245, 87, 108, 0.3);
+            box-shadow: 0 10px 40px rgba(24, 0, 173, 0.3);
         }
         
         .bingo-year {
@@ -95,13 +126,13 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             overflow: visible;
             padding: 0;
-            border: 8px solid #667eea;
+            border: 8px solid #FFD700;
         }
         
         .bingo-cell:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            border-color: #5568d3;
+            border-color: #FFC700;
         }
         
         .bingo-cell textarea {
@@ -138,7 +169,7 @@
             width: calc(100% - 6px);
             padding: 8px;
             margin: 0 3px 3px 3px;
-            background: #667eea;
+            background: #1800ad;
             color: white;
             border: none;
             border-radius: 0 0 4px 4px;
@@ -151,7 +182,7 @@
         }
         
         .complete-btn:hover {
-            background: #5568d3;
+            background: #3533cd;
         }
         
         .complete-btn:active {
@@ -161,7 +192,13 @@
         .bingo-cell.checked {
             background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
             animation: celebration 0.5s ease;
-            border-color: #2f855a;
+            border-color: #FFD700;
+        }
+        
+        @keyframes celebration {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05) rotate(2deg); }
+            100% { transform: scale(1); }
         }
         
         .bingo-cell.checked .complete-btn {
@@ -170,12 +207,6 @@
         
         .bingo-cell.checked .complete-btn:hover {
             background: #276749;
-        }
-        
-        @keyframes celebration {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05) rotate(2deg); }
-            100% { transform: scale(1); }
         }
         
         .checkmark {
@@ -248,7 +279,7 @@
         
         .celebration-input:focus {
             outline: none;
-            border-color: #f5576c;
+            border-color: #1800ad;
         }
         
         .actions {
@@ -260,8 +291,8 @@
         }
         
         button {
-            background: white;
-            color: #f5576c;
+            background: #1800ad;
+            color: white;
             border: none;
             padding: 14px 28px;
             border-radius: 10px;
@@ -269,13 +300,13 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(24, 0, 173, 0.2);
         }
         
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            background: #fff;
+            box-shadow: 0 6px 20px rgba(24, 0, 173, 0.3);
+            background: #3533cd;
         }
         
         button:active {
@@ -306,11 +337,11 @@
         }
         
         .instructions strong {
-            color: #667eea;
+            color: #1800ad;
         }
         
         .tip-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000000 0%, #3533cd 100%);
             color: white;
             padding: 20px;
             border-radius: 12px;
@@ -331,18 +362,53 @@
             background: white;
             padding: 15px;
             border-radius: 8px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #1800ad;
             font-size: 0.9em;
             color: #4a5568;
         }
         
         .example-label {
             font-weight: 600;
-            color: #667eea;
+            color: #1800ad;
             margin-bottom: 5px;
             font-size: 0.85em;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+        
+        .footer-creator {
+            font-size: 0.95em;
+            color: #4a5568;
+            margin-bottom: 10px;
+        }
+        
+        .footer-cta {
+            margin-top: 15px;
+        }
+        
+        .footer-cta a {
+            display: inline-block;
+            background: #1800ad;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(24, 0, 173, 0.3);
+        }
+        
+        .footer-cta a:hover {
+            background: #3533cd;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(24, 0, 173, 0.4);
         }
         
         .test-status {
@@ -350,33 +416,69 @@
         }
         
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
             .container {
-                padding: 25px;
+                padding: 20px 15px;
             }
             
             h1 {
-                font-size: 1.8em;
+                font-size: 1.5em;
+            }
+            
+            .tagline {
+                font-size: 1em;
+            }
+            
+            .subtitle {
+                font-size: 0.85em;
+            }
+            
+            .logo-header img {
+                width: 100px;
             }
             
             .bingo-wrapper {
-                padding: 25px;
+                padding: 20px 15px;
             }
             
             .bingo-year {
-                font-size: 2em;
+                font-size: 1.8em;
+                margin-bottom: 15px;
             }
             
             .bingo-grid {
                 gap: 8px;
+                max-width: 100%;
             }
             
             .bingo-cell {
-                padding: 5px;
+                padding: 0;
+                border: 5px solid #FFD700;
             }
             
             .bingo-cell textarea {
                 font-size: 0.7em;
-                padding: 5px;
+                padding: 8px 5px;
+                margin: 2px 2px 0 2px;
+            }
+            
+            .complete-btn {
+                font-size: 0.65em;
+                padding: 6px 4px;
+                margin: 0 2px 2px 2px;
+                width: calc(100% - 4px);
+            }
+            
+            .checkmark {
+                width: 35px;
+                height: 35px;
+                font-size: 1.5em;
+                top: -6px;
+                right: -6px;
+                border: 3px solid white;
             }
             
             button {
@@ -384,8 +486,24 @@
                 font-size: 0.9em;
             }
             
+            .celebration-section {
+                padding: 15px;
+            }
+            
+            .celebration-section h3 {
+                font-size: 1em;
+            }
+            
             .instructions {
-                padding: 20px;
+                padding: 20px 15px;
+            }
+            
+            .instructions h3 {
+                font-size: 1.1em;
+            }
+            
+            .instructions ol {
+                font-size: 0.9em;
             }
             
             .examples {
@@ -394,16 +512,30 @@
             
             .celebration-grid {
                 grid-template-columns: 1fr;
+                gap: 10px;
             }
             
             .celebration-label {
-                text-align: center;
+                text-align: left;
+                font-size: 0.85em;
+            }
+            
+            .celebration-input {
+                font-size: 0.85em;
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="logo-header">
+            <img src="logo.png" alt="MGM Creative Solutions">
+            <div class="company-name">
+                <a href="https://mgmcreativesolutions.co.uk" target="_blank">MGM Creative Solutions Ltd</a>
+            </div>
+        </div>
+        
         <div class="header">
             <h1>Forget Goal Setting, Track Your Wins</h1>
             <p class="tagline">The 2026 Bingo Card (4x4 Edition)</p>
@@ -432,9 +564,9 @@
             </div>
             
             <div class="actions">
-                <button onclick="testClearBingo()">🔄 Clear Board</button>
-                <button onclick="testRandomize()">✨ Get Ideas</button>
-                <button onclick="testSaveBoard()">📸 Save Image</button>
+                <button onclick="clearBingo()">🔄 Clear Board</button>
+                <button onclick="randomize()">✨ Get Ideas</button>
+                <button onclick="saveBoard()">📸 Save Image</button>
             </div>
         </div>
         
@@ -443,7 +575,7 @@
             <ol>
                 <li><strong>Fill in 16 milestones</strong> you'd love to see happen in 2026 - mix serious, silly, and wild</li>
                 <li><strong>Decide your celebrations</strong> - what happens when you complete a row, column, diagonal, or the full board?</li>
-                <li><strong>Click cells when you hit them</strong> throughout the year (they'll turn green!)</li>
+                <li><strong>Click "✓ Mark Complete"</strong> button on cells when you hit them throughout the year (they'll turn green!)</li>
                 <li><strong>Get a bingo?</strong> That's 4 in a row - horizontal, vertical, or diagonal</li>
                 <li><strong>Save and share</strong> with your team - make it visible, make it fun</li>
             </ol>
@@ -471,6 +603,17 @@
                     "Post goes viral (100K+ impressions)"<br>
                     "Competitor reaches out worried"
                 </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-creator">
+                Created by <strong>Masha Gaganova</strong>
+            </div>
+            <div class="footer-cta">
+                <a href="https://calendly.com/m-gaganova-mgmconsult/call-with-masha-gaganova" target="_blank">
+                    💬 Want to chat? Book a call here
+                </a>
             </div>
         </div>
     </div>
@@ -537,7 +680,7 @@
             }
         }
         
-        function testClearBingo() {
+        function clearBingo() {
             const cells = document.querySelectorAll('.bingo-cell');
             cells.forEach((cell) => {
                 cell.classList.remove('checked');
@@ -549,13 +692,9 @@
             for (let i = 1; i <= 4; i++) {
                 document.getElementById(`celebrate${i}`).value = '';
             }
-            
-            setTimeout(() => {
-                alert('✅ CLEAR BOARD TEST PASSED!\n\nAll milestones and celebrations have been cleared.');
-            }, 100);
         }
         
-        function testRandomize() {
+        function randomize() {
             const cells = document.querySelectorAll('.bingo-cell');
             const shuffled = [...sampleIdeas].sort(() => Math.random() - 0.5);
             
@@ -576,10 +715,6 @@
             for (let i = 1; i <= 4; i++) {
                 document.getElementById(`celebrate${i}`).value = celebrations[i-1];
             }
-            
-            setTimeout(() => {
-                alert('✅ GET IDEAS TEST PASSED!\n\nBoard filled with 16 sample milestones and celebration ideas.\n\nNow try:\n1. Click the "✓ Mark Complete" button on any cell\n2. Complete a row/column/diagonal to see celebration alert\n3. Click "Save Image" to download');
-            }, 100);
         }
         
         function checkBingo() {
@@ -639,12 +774,11 @@
             alert(`🎉 BINGO! You completed ${type === 'full' ? 'the FULL BOARD' : type === 'horizontal' ? 'a row' : type === 'vertical' ? 'a column' : 'a diagonal'}!\n\nTime to celebrate: ${celebrations[type]}!`);
         }
         
-        function testSaveBoard() {
+        function saveBoard() {
             const bingoWrapper = document.querySelector('.bingo-wrapper');
             const buttons = document.querySelector('.actions');
             const testStatus = document.querySelector('.test-status');
             
-            // Hide elements that shouldn't be in the image
             buttons.style.display = 'none';
             if (testStatus) testStatus.style.display = 'none';
             
@@ -663,25 +797,15 @@
                     link.download = `2026-bingo-card-${timestamp}.png`;
                     link.href = canvas.toDataURL('image/png');
                     link.click();
-                    
-                    setTimeout(() => {
-                        alert('✅ SAVE IMAGE TEST PASSED!\n\nImage downloaded as:\n"2026-bingo-card-' + timestamp + '.png"\n\nCheck your Downloads folder!\n\nThe image includes:\n✓ Your 16 milestones\n✓ Celebration plans\n✓ Checkmarks on completed items');
-                    }, 100);
                 }).catch(error => {
                     buttons.style.display = 'flex';
                     if (testStatus) testStatus.style.display = 'block';
-                    alert('❌ Image save error: ' + error.message);
+                    alert('Error saving image: ' + error.message);
                 });
             }, 100);
         }
         
         createBingoGrid();
-        
-        // Test on load
-        console.log('✅ Bingo card loaded successfully');
-        console.log('✅ All 16 cells created');
-        console.log('✅ Celebration inputs ready');
-        console.log('✅ All buttons functional');
     </script>
 </body>
 </html>
