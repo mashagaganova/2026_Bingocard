@@ -245,8 +245,8 @@
         }
         
         .celebration-section {
-            max-width: 700px;
-            margin: 0 auto;
+            max-width: 100%;
+            margin: 20px auto;
             background: white;
             border-radius: 12px;
             padding: 20px;
@@ -429,6 +429,11 @@
                 padding: 20px 15px;
             }
             
+            .header {
+                margin: 0 -15px;
+                padding: 20px 15px;
+            }
+            
             h1 {
                 font-size: 1.5em;
             }
@@ -446,7 +451,8 @@
             }
             
             .bingo-wrapper {
-                padding: 20px 15px;
+                padding: 20px 10px;
+                margin: 20px -15px;
             }
             
             .bingo-year {
@@ -455,8 +461,9 @@
             }
             
             .bingo-grid {
-                gap: 8px;
+                gap: 6px;
                 max-width: 100%;
+                padding: 0 5px;
             }
             
             .bingo-cell {
@@ -542,8 +549,8 @@
         </div>
         
         <div class="header">
-            <h1>Forget Goal Setting, Track Your Wins</h1>
-            <p class="tagline">The 2026 Bingo Card (4x4 Edition)</p>
+            <h1>Forget goal setting, track your wins</h1>
+            <p class="tagline">The 2026 bingo card (4x4 edition)</p>
             <p class="subtitle">Because rigid plans are dead. Let's celebrate 16 milestones we'd actually be excited about.</p>
         </div>
         
@@ -552,7 +559,7 @@
             <div class="bingo-grid" id="bingoGrid"></div>
             
             <div class="celebration-section">
-                <h3>🎉 How Will You Celebrate?</h3>
+                <h3>How will you celebrate?</h3>
                 <div class="celebration-grid">
                     <div class="celebration-label">Horizontal Row:</div>
                     <input type="text" class="celebration-input" id="celebrate1" placeholder="e.g., Team dinner at favorite restaurant">
@@ -592,21 +599,21 @@
             <div class="examples">
                 <div class="example-card">
                     <div class="example-label">🎯 Serious</div>
-                    "Launch v2.0 with zero critical bugs"<br>
-                    "Hit $500K revenue milestone"<br>
+                    "Complete transformation programme in 2026"<br>
+                    "Hit £500K revenue milestone"<br>
                     "Close partnership with dream brand"
                 </div>
                 <div class="example-card">
                     <div class="example-label">😄 Silly</div>
-                    "Dave finally fixes his Zoom background"<br>
-                    "Office plants survive the entire year"<br>
-                    "Someone uses the standing desk"
+                    "Never say 'can you see my screen?'"<br>
+                    "Jump 5 times before a call"<br>
+                    "Have a no meetings Friday"
                 </div>
                 <div class="example-card">
                     <div class="example-label">🚀 Wild</div>
-                    "Feature in TechCrunch or major press"<br>
-                    "Post goes viral (100K+ impressions)"<br>
-                    "Competitor reaches out worried"
+                    "Feature in national press"<br>
+                    "Run a marathon"<br>
+                    "Sleep for 12 hours straight"
                 </div>
             </div>
         </div>
@@ -626,7 +633,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
         const sampleIdeas = [
-            "Launch major feature with no critical bugs",
+            "Complete transformation programme in 2026",
             "Hit quarterly revenue target ahead of schedule",
             "Close deal with dream client we've been chasing",
             "Team member gets promoted or wins industry award",
