@@ -653,24 +653,38 @@
         
         function createBingoGrid() {
             const grid = document.getElementById('bingoGrid');
+            
+            // Load saved data
+            const savedData = loadBingoData();
+            
             for (let i = 0; i < 16; i++) {
                 const cell = document.createElement('div');
                 cell.className = 'bingo-cell';
                 
+                // Add checked class if saved
+                if (savedData.checked[i]) {
+                    cell.classList.add('checked');
+                }
+                
                 const textarea = document.createElement('textarea');
                 textarea.placeholder = 'Add milestone...';
                 textarea.maxLength = 150;
+                textarea.value = savedData.milestones[i] || '';
                 textarea.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
                 textarea.addEventListener('focus', function(e) {
                     e.stopPropagation();
                 });
+                // Save on input
+                textarea.addEventListener('input', function() {
+                    saveBingoData();
+                });
                 cell.appendChild(textarea);
                 
                 const button = document.createElement('button');
                 button.className = 'complete-btn';
-                button.innerHTML = '✓ Mark Complete';
+                button.innerHTML = savedData.checked[i] ? '✓ Completed' : '✓ Mark Complete';
                 button.addEventListener('click', function(e) {
                     e.stopPropagation();
                     cell.classList.toggle('checked');
@@ -679,6 +693,7 @@
                     } else {
                         button.innerHTML = '✓ Mark Complete';
                     }
+                    saveBingoData();
                     checkBingo();
                 });
                 cell.appendChild(button);
@@ -690,9 +705,62 @@
                 
                 grid.appendChild(cell);
             }
+            
+            // Load saved celebrations
+            for (let i = 1; i <= 4; i++) {
+                const input = document.getElementById(`celebrate${i}`);
+                if (input && savedData.celebrations[i-1]) {
+                    input.value = savedData.celebrations[i-1];
+                }
+                // Save on input
+                if (input) {
+                    input.addEventListener('input', function() {
+                        saveBingoData();
+                    });
+                }
+            }
+        }
+        
+        function loadBingoData() {
+            const saved = localStorage.getItem('bingoCard2026');
+            if (saved) {
+                return JSON.parse(saved);
+            }
+            return {
+                milestones: Array(16).fill(''),
+                checked: Array(16).fill(false),
+                celebrations: Array(4).fill('')
+            };
+        }
+        
+        function saveBingoData() {
+            const cells = document.querySelectorAll('.bingo-cell');
+            const milestones = [];
+            const checked = [];
+            
+            cells.forEach((cell) => {
+                milestones.push(cell.querySelector('textarea').value);
+                checked.push(cell.classList.contains('checked'));
+            });
+            
+            const celebrations = [];
+            for (let i = 1; i <= 4; i++) {
+                const input = document.getElementById(`celebrate${i}`);
+                celebrations.push(input ? input.value : '');
+            }
+            
+            const data = {
+                milestones,
+                checked,
+                celebrations
+            };
+            
+            localStorage.setItem('bingoCard2026', JSON.stringify(data));
         }
         
         function clearBingo() {
+            if (!confirm('Clear the entire board? This will erase all your milestones and celebrations permanently.')) return;
+            
             const cells = document.querySelectorAll('.bingo-cell');
             cells.forEach((cell) => {
                 cell.classList.remove('checked');
@@ -704,6 +772,9 @@
             for (let i = 1; i <= 4; i++) {
                 document.getElementById(`celebrate${i}`).value = '';
             }
+            
+            // Clear saved data
+            localStorage.removeItem('bingoCard2026');
         }
         
         function randomize() {
@@ -727,6 +798,9 @@
             for (let i = 1; i <= 4; i++) {
                 document.getElementById(`celebrate${i}`).value = celebrations[i-1];
             }
+            
+            // Save the random data
+            saveBingoData();
         }
         
         function checkBingo() {
