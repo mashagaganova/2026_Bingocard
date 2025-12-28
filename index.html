@@ -583,6 +583,7 @@
                 <button onclick="clearBingo()">🔄 Clear Board</button>
                 <button onclick="randomize()">✨ Get Ideas</button>
                 <button onclick="saveBoard()">📸 Save Image</button>
+                <button onclick="saveWallpaper()">📱 Save as Wallpaper</button>
             </div>
         </div>
         
@@ -960,6 +961,134 @@
                     });
                     
                     alert('Error saving image: ' + error.message);
+                });
+            }, 100);
+        }
+        
+        function saveWallpaper() {
+            const bingoWrapper = document.querySelector('.bingo-wrapper');
+            const buttons = document.querySelector('.actions');
+            const testStatus = document.querySelector('.test-status');
+            const celebrationSection = document.querySelector('.celebration-section');
+            
+            // Store original styles
+            const originalWrapperStyle = bingoWrapper.style.cssText;
+            const originalMargin = bingoWrapper.style.margin;
+            
+            // Store original textarea values and create text divs
+            const cells = document.querySelectorAll('.bingo-cell');
+            const originalTextareas = [];
+            
+            cells.forEach((cell, index) => {
+                const textarea = cell.querySelector('textarea');
+                const text = textarea.value;
+                originalTextareas.push({textarea, text});
+                
+                const textDiv = document.createElement('div');
+                textDiv.className = 'milestone-text-print';
+                textDiv.textContent = text || 'Add milestone...';
+                textDiv.style.cssText = `
+                    width: 100%;
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    font-size: 0.7em;
+                    padding: 6px;
+                    background: #f8fafc;
+                    font-weight: 500;
+                    color: ${text ? '#2d3748' : '#cbd5e0'};
+                    border-radius: 4px 4px 0 0;
+                    margin: 3px 3px 0 3px;
+                    overflow-wrap: break-word;
+                    word-wrap: break-word;
+                    word-break: break-word;
+                    hyphens: auto;
+                    line-height: 1.15;
+                `;
+                
+                textarea.style.display = 'none';
+                cell.insertBefore(textDiv, cell.querySelector('.complete-btn'));
+            });
+            
+            // Optimize for phone wallpaper (portrait 9:16 ratio)
+            bingoWrapper.style.cssText = `
+                padding: 60px 30px;
+                margin: 0;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            `;
+            
+            // Hide elements not needed in wallpaper
+            buttons.style.display = 'none';
+            if (testStatus) testStatus.style.display = 'none';
+            if (celebrationSection) celebrationSection.style.display = 'none';
+            
+            setTimeout(() => {
+                html2canvas(bingoWrapper, {
+                    backgroundColor: null,
+                    width: 1080,
+                    height: 1920,
+                    scale: 2,
+                    logging: false,
+                    useCORS: true,
+                    letterRendering: true,
+                    allowTaint: true,
+                    onclone: function(clonedDoc) {
+                        const clonedWrapper = clonedDoc.querySelector('.bingo-wrapper');
+                        if (clonedWrapper) {
+                            clonedWrapper.style.width = '1080px';
+                            clonedWrapper.style.height = '1920px';
+                        }
+                        const clonedCells = clonedDoc.querySelectorAll('.milestone-text-print');
+                        clonedCells.forEach(cell => {
+                            cell.style.whiteSpace = 'normal';
+                            cell.style.wordWrap = 'break-word';
+                        });
+                    }
+                }).then(canvas => {
+                    // Restore original state
+                    bingoWrapper.style.cssText = originalWrapperStyle;
+                    buttons.style.display = 'flex';
+                    if (testStatus) testStatus.style.display = 'block';
+                    if (celebrationSection) celebrationSection.style.display = 'block';
+                    
+                    // Remove temp divs and restore textareas
+                    cells.forEach((cell) => {
+                        const tempDiv = cell.querySelector('.milestone-text-print');
+                        if (tempDiv) tempDiv.remove();
+                        const textarea = cell.querySelector('textarea');
+                        if (textarea) textarea.style.display = '';
+                    });
+                    
+                    const link = document.createElement('a');
+                    const timestamp = new Date().toISOString().slice(0,10);
+                    link.download = `2026-bingo-wallpaper-${timestamp}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    
+                    // Show instructions
+                    setTimeout(() => {
+                        alert('📱 Wallpaper saved!\n\nTo set as lock screen:\n\niPhone: Settings → Wallpaper → Choose New Wallpaper → Select the image\n\nAndroid: Long press home screen → Wallpapers → My photos → Select the image');
+                    }, 500);
+                }).catch(error => {
+                    // Restore on error
+                    bingoWrapper.style.cssText = originalWrapperStyle;
+                    buttons.style.display = 'flex';
+                    if (testStatus) testStatus.style.display = 'block';
+                    if (celebrationSection) celebrationSection.style.display = 'block';
+                    
+                    cells.forEach((cell) => {
+                        const tempDiv = cell.querySelector('.milestone-text-print');
+                        if (tempDiv) tempDiv.remove();
+                        const textarea = cell.querySelector('textarea');
+                        if (textarea) textarea.style.display = '';
+                    });
+                    
+                    alert('Error saving wallpaper: ' + error.message);
                 });
             }, 100);
         }
